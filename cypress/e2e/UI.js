@@ -55,7 +55,7 @@ describe('Shopping', () => {
 	});
 
 	it('add dif items to the cart, @ID: 07', () => {
-		utils.addItemsToCart([1,3,5,6,7,2])
+		utils.addItemsToCart([1, 3, 5, 6, 7, 2])
 		cy.GetByTestId(cart.cartIconButton).click()
 		cy.GetByTestId(cart.checkOutButton).should('be.visible');
 		cy.GetByTestId('cartProducts').invoke('text').then((allNumbers) => {
@@ -71,24 +71,24 @@ describe('Shopping', () => {
 	});
 
 	it('Check the functiolaty of the installments, @ID: 08', () => {
-		utils.addItemsToCart([3,3,5,6,11,12,12,15])
+		utils.addItemsToCart([3, 3, 5, 6, 11, 12, 12, 15])
 		cy.GetByTestId(cart.cartIconButton).click()
-		cy.GetByTestId(mainPage.allInstallments).invoke('text').then((fullText)=>{
+		cy.GetByTestId(mainPage.allInstallments).invoke('text').then((fullText) => {
 			const cleanText = fullText.match(/^[^\d]*(\d+)/)[1]
 			const payment = fullText.match(/\$ [0-9.]+/)[0].split('$')[1]
-			cy.log(parseFloat(payment)*cleanText)
-			cy.GetByTestId(cart.subTotal).invoke('text').then((subTotal)=>{
+			cy.log(parseFloat(payment) * cleanText)
+			cy.GetByTestId(cart.subTotal).invoke('text').then((subTotal) => {
 				const numberSubTotal = subTotal.split('$')[1]
-			expect(parseFloat(numberSubTotal)).to.be.closeTo(parseFloat(payment)*cleanText, 0.1);
+				expect(parseFloat(numberSubTotal)).to.be.closeTo(parseFloat(payment) * cleanText, 0.1);
 			})
 		})
 	});
 
 	it('Check the number of added items, @ID: 08', () => {
-		const itemsToAdd = [3,3,5,6,11,12,12,15]
+		const itemsToAdd = [3, 3, 5, 6, 11, 12, 12, 15]
 		utils.addItemsToCart(itemsToAdd)
 		cy.GetByTestId(cart.cartIconButton).click()
-		cy.GetByTestId(cart.numberOfItemsInCart).invoke('text').then((numberOfItems)=>{
+		cy.GetByTestId(cart.numberOfItemsInCart).invoke('text').then((numberOfItems) => {
 			expect(parseInt(numberOfItems)).to.eq(itemsToAdd.length)
 		})
 	});
