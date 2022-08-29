@@ -71,7 +71,7 @@ Cypress Tests -> This job does the following :
 
 3- Runs the Cypress tests inside the docker container and reports the result.
 
-Run-URL: https://github.com/FadiRazouk/react-shopping-cart/runs/8072154704?check_suite_focus=true
+Run-URL: https://github.com/FadiRazouk/react-shopping-cart/runs/8079988134?check_suite_focus=true
 
 API-Tests -> This job does the following :
 
